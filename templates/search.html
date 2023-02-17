@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" href="../static/main.css">
+  </head>
+  <body>
+    <img src="../static/logo.png" alt="Logo" class="logo">
+    <img src="../static/school.png" alt="Logo" class="logo2">
+    <img src="../static/logo3.png" alt="Logo" class="logo3">
+    <div class="container">
+      <div class="left-side">
+        <!-- Disease database in arabic -->
+        <h2>قاعدة بيانات الأمراض</h2>
+        <button onclick="closeList()">Close list</button> <!-- Add a button to close the list -->
+        <button onclick="openList()">Open list</button> <!-- Add a button to reopen the list -->
+        <ul>
+          {% for disease in diseases %}
+            <li><a href="#" onclick="handleClick('{{ disease }}')">{{ disease}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="right-side">
+        <h2>بحث</h2>
+        <form onsubmit="handleSubmit(event)">
+          <input type="text" placeholder="بحث...">
+          <button type="submit">ابحث عن مرض</button>
+        </form>
+        <textarea id="result" readonly>{{ result }}</textarea>
+        <div class="main">
+          <h2>اعداد الطلاب :</h2>
+          <ul id="student-list">
+          </ul>
+        </div>
+        <div class="main">
+          <h2> اشرف على المشروع :</h2>
+          <ul id="teacher-list">
+            <li>المعلم المشرف : بسام النافع
+            </li>
+            <li>رئيس القسم : معتز ابوزاهر
+            </li>
+            <li>الموجه الفني : سيد فؤاد
+            </li>
+            <li>مدير المدرسه : محمد الرشيدي
+            </li>
+          </ul>
+        </div>
+      </div>
+        
+      </div>
+    </div>
+    <script>
+      function handleClick(disease) {
+        fetch(`/click?disease=${disease}`)
+          .then(response => response.text())
+          .then(text => {
+            updateResult(text);
+          });
+      }
+    
+      function handleSubmit(event) {
+  event.preventDefault();
+  const input = document.querySelector("input[type='text']").value;
+  fetch(`/submit?input=${input}`)
+    .then(response => response.text())
+    .then(text => {
+      updateResult(text);
+    });
+}
+    
+      function closeList() {
+        const ul = document.querySelector("ul");
+        ul.style.display = "none"; // hide the unordered list
+      }
+
+      function openList() {
+    const ul = document.querySelector("ul");
+    ul.style.display = "block"; // show the unordered list
+  }
+      function updateResult(text) {
+        const resultEl = document.getElementById("result");
+        resultEl.innerText = text ;
+      }
+      const studentList = document.getElementById('student-list');
+
+function updateList() {
+  const students = ['مراد محمد جاد', 'مازن محمد ابراهيم', 'عبدالله عبد العظيم']; // Replace with your data source
+  
+  // Reset the list
+  studentList.innerHTML = '';
+  
+  // Populate the list
+  students.forEach(student => {
+    const li = document.createElement('li');
+    li.textContent = student;
+    studentList.appendChild(li);
+  });
+  
+  // Adjust the width and height of the list based on its content
+  const listHeight = studentList.scrollHeight;
+  const listWidth = studentList.scrollWidth;
+  studentList.style.height = listHeight + 'px';
+  studentList.style.width = listWidth + 'px';
+}
+
+updateList();
+    </script>

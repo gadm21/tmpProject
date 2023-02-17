@@ -1,0 +1,117 @@
+/* This code sets the display property of the container element to flex */
+.container {
+  display: flex;
+}
+
+/* This code sets the width and padding of the left side of the page */
+.left-side {
+  width: 25%;
+  padding: 20px;
+  border: 5px inset blue;
+  height: 465px;
+  overflow: auto;
+}
+
+/* This code sets the width and padding of the right side of the page */
+.right-side {
+  width: 75%;
+  padding: 20px;
+  border: 5px inset blue;
+}
+
+/* This code sets the display property of the form element to flex, and aligns items to the center and justifies space between them */
+form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* This code sets the width and padding of the text input element in the form */
+input[type="text"] {
+  border: 3px ridge black;
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* This code sets the styles for the submit button, including its width, padding, font size, background color, lack of border, and cursor style */
+button[type="submit"] {
+  width: 30%;
+  padding: 10px;
+  font-size: 20px;
+  background-color: silver;
+  border: 1px ridge black;
+  cursor: pointer;
+}
+
+/* This code sets the styles for the results box, including its width, height, padding, and font size */
+textarea#result {
+  border: 3px ridge black;
+  width: 100%;
+  height: 300px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* This code sets the list style to none and the margin bottom to 10px for each list item */
+li {
+  list-style: square;
+  margin-bottom: 10px;
+
+
+}
+
+/* This code sets the styles for each link element, including its lack of text decoration, color, and cursor style */
+a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+/* This code sets the styles for the "show more" button */
+.show-more {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* This code sets the styles for the "show less" button */
+.show-less {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}
+.logo2 {
+  position: absolute;
+  top: 15px;
+  left: 60%;
+  transform: translateX(-50%);
+  height: 50px;
+  width: auto;
+  background-image: url("../static/school.png"); /* replace "path/to/image.png" with the actual path to your image */
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.logo3 {
+  position: absolute;
+  top: 15px;
+  left: 35%;
+  transform: translateX(-50%);
+  height: 50px;
+  width: auto;
+  background-image: url("../static/logo3.png"); /* replace "path/to/image.png" with the actual path to your image */
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 50px;
+  width: auto;
+  background-image: url("../static/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
